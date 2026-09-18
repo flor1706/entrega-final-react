@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Notebook Lenovo",
+    "precio": 850000,
+    "stock": 10,
+    "imagen": "/images/notebook.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Monitor Samsung",
+    "precio": 320000,
+    "stock": 8,
+    "imagen": "/images/monitor.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Teclado Mecánico",
+    "precio": 95000,
+    "stock": 15,
+    "imagen": "/images/teclado.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Mouse Gamer",
+    "precio": 45000,
+    "stock": 20,
+    "imagen": "/images/mouse.jpg"
+  }
+]
