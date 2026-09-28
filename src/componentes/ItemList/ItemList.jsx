@@ -1,6 +1,6 @@
 import { Item } from "../Item/Item";
 
-export function ItemList({ productos }) {
+export function ItemList({ productos, agregarAlCarrito }) {
   return (
     <div className="productos-grid">
       {productos.map((producto) => (
@@ -11,6 +11,7 @@ export function ItemList({ productos }) {
           precio={producto.precio}
           stock={producto.stock}
           imagen={producto.imagen}
+          agregarAlCarrito={agregarAlCarrito}
         />
       ))}
     </div>

@@ -37,6 +37,12 @@ body {
   text-decoration: underline;
 }
 
+.nav a.activo {
+  text-decoration: underline;
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
 main {
   min-height: 60vh;
 }

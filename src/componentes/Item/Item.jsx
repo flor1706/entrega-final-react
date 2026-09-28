@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
 
-export function Item({ id, nombre, precio, stock, imagen }) {
+export function Item({
+  id,
+  nombre,
+  precio,
+  stock,
+  imagen,
+  agregarAlCarrito,
+}) {
+  const producto = {
+    id,
+    nombre,
+    precio,
+    stock,
+    imagen,
+  };
+
   return (
     <div className="producto-card">
       <img
@@ -18,6 +33,13 @@ export function Item({ id, nombre, precio, stock, imagen }) {
       <Link className="boton" to={`/producto/${id}`}>
         Ver detalle
       </Link>
+
+      <button
+        className="boton"
+        onClick={() => agregarAlCarrito(producto)}
+      >
+        Agregar al carrito
+      </button>
     </div>
   );
 }

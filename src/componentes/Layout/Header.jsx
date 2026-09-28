@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -6,9 +6,26 @@ function Header() {
       <h2 className="logo">Tech Store</h2>
 
       <nav className="nav">
-        <Link to="/">Inicio</Link>
-        <Link to="/productos">Productos</Link>
-        <Link to="/carrito">Carrito</Link>
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "activo" : "")}
+        >
+          Inicio
+        </NavLink>
+
+        <NavLink
+          to="/productos"
+          className={({ isActive }) => (isActive ? "activo" : "")}
+        >
+          Productos
+        </NavLink>
+
+        <NavLink
+          to="/carrito"
+          className={({ isActive }) => (isActive ? "activo" : "")}
+        >
+          Carrito
+        </NavLink>
       </nav>
     </header>
   );
