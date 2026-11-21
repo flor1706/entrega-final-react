@@ -26,7 +26,9 @@ export function Item({
 
       <h3>{nombre}</h3>
 
-      <p>Precio: ${precio}</p>
+      <p>
+  Precio: ${producto.precio.toLocaleString("es-AR")}
+</p>
 
       <p>Stock: {stock}</p>
 

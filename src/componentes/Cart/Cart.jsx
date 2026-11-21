@@ -1,4 +1,14 @@
-function Cart({ carrito }) {
+
+import { useCart } from "../../context/CartContext";
+
+function Cart() {
+  const {
+    carrito,
+    eliminarDelCarrito,
+    vaciarCarrito,
+    precioTotal,
+  } = useCart();
+
   if (carrito.length === 0) {
     return (
       <section className="pagina">
@@ -23,15 +33,35 @@ function Cart({ carrito }) {
 
             <h3>{producto.nombre}</h3>
 
-            <p>Precio: ${producto.precio}</p>
+            <p>Precio: ${producto.precio.toLocaleString("es-AR")}</p>
 
             <p>Cantidad: {producto.cantidad}</p>
 
             <p>
-              Subtotal: ${producto.precio * producto.cantidad}
-            </p>
+  Subtotal: ${(producto.precio * producto.cantidad).toLocaleString("es-AR")}
+</p>
+
+            <button
+              className="boton"
+              onClick={() => eliminarDelCarrito(producto.id)}
+            >
+              Eliminar producto
+            </button>
           </div>
         ))}
+      </div>
+
+      <div className="carrito-resumen">
+       <h2>
+  Total de la compra: ${precioTotal.toLocaleString("es-AR")}
+</h2>
+
+        <button
+          className="boton"
+          onClick={vaciarCarrito}
+        >
+          Vaciar carrito
+        </button>
       </div>
     </section>
   );
