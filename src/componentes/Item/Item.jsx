@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 
 export function Item({
@@ -27,17 +28,20 @@ export function Item({
       <h3>{nombre}</h3>
 
       <p>
-  Precio: ${producto.precio.toLocaleString("es-AR")}
-</p>
+        Precio: ${producto.precio.toLocaleString("es-AR")}
+      </p>
 
       <p>Stock: {stock}</p>
 
-      <Link className="boton" to={`/producto/${id}`}>
+      <Link
+        className="boton boton-detalle"
+        to={`/producto/${id}`}
+      >
         Ver detalle
       </Link>
 
       <button
-        className="boton"
+        className="boton boton-carrito"
         onClick={() => agregarAlCarrito(producto)}
       >
         Agregar al carrito

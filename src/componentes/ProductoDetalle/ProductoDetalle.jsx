@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { useCart } from "../../context/CartContext";
 
 function ProductoDetalle() {
   const { id } = useParams();
+
+  const { agregarAlCarrito, mensajeStock } = useCart();
 
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
@@ -67,14 +70,36 @@ function ProductoDetalle() {
 
       <div>
         <h1>{producto.nombre}</h1>
+
         <p>
-  Precio: ${producto.precio.toLocaleString("es-AR")}
-</p>
+          Precio: ${producto.precio.toLocaleString("es-AR")}
+        </p>
+
         <p>Stock disponible: {producto.stock}</p>
 
-        <Link className="boton" to="/productos">
-          Volver a productos
-        </Link>
+        {mensajeStock && (
+          <p className="mensaje-stock" role="alert">
+            {mensajeStock}
+          </p>
+        )}
+
+        <div className="detalle-botones">
+          <button
+            className="boton boton-carrito"
+            type="button"
+            onClick={() => agregarAlCarrito(producto)}
+            disabled={producto.stock <= 0}
+          >
+            Agregar al carrito
+          </button>
+
+          <Link
+            className="boton boton-detalle"
+            to="/productos"
+          >
+            Volver a productos
+          </Link>
+        </div>
       </div>
     </section>
   );

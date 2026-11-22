@@ -1,11 +1,22 @@
-
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext(null);
 
 export function CartProvider({ children }) {
-  const [carrito, setCarrito] = useState([]);
-  const [mensajeStock, setMensajeStock] = useState("");
+  const [carrito, setCarrito] = useState(() => {
+  try {
+    const carritoGuardado = localStorage.getItem("carrito");
+
+    return carritoGuardado ? JSON.parse(carritoGuardado) : [];
+  } catch (error) {
+    console.error("Error al recuperar el carrito:", error);
+    return [];
+  }
+});
+const [mensajeStock, setMensajeStock] = useState("");
+ useEffect(() => {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}, [carrito]);
 
   const agregarAlCarrito = (producto) => {
     const productoExistente = carrito.find(
